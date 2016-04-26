@@ -7,15 +7,14 @@
                             inlineStyle="background-color:transparent;"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="commandButton2" text="Store visit" action="replenishment" iconPosition="trailing"
-                               styleClass="adfmf-commandButton-small"/>
+            
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton text="Logout" id="cb5" action="logout" styleClass="adfmf-commandButton-small"/>
+            <amx:commandButton text="Logout" id="cb5" action="logout" styleClass="adfmf-commandButton"/>
         </amx:facet>
         <amx:panelSplitter id="ps1">
             <amx:facet name="navigator">
-                <amx:selectOneButton id="sob1" styleClass="adfmf-commandButton-small"
+                <amx:selectOneButton id="sob1" styleClass="adfmf-commandButton-large"
                                      inlineStyle="width:100%; vertical-align:middle; text-align:center; padding:10px 0px 0px; background-color:White;"
                                      value="#{pageFlowScope.storeLocator.searchBySelection}" simple="true">
                     <amx:selectItem id="si1" label="Alphabetical " value="0"/>
@@ -84,9 +83,9 @@
                                        inlineStyle="z-index=-1; width:100%; height:100%"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf8" height="45%" shortDesc="Cell" valign="top"
-                                        inlineStyle="padding:10px 10px 10px 10px;">
+                                        inlineStyle="padding:0px 0px 0px 0px;">
                             <amx:listView id="lvprofile" styleClass="adfmf-listView-insetList"
-                                          inlineStyle="margin-top:0; background-color:Silver;opacity: 1.0;">
+                                          inlineStyle="margin-top:0; background-color:white;">
                                 <amx:listItem id="lip4" shortDesc="Org listIem" showLinkIcon="false"
                                               styleClass="hr-listItem-noselect">
                                     <amx:tableLayout width="100%" id="ptl4" shortDesc="Org Table">
@@ -286,6 +285,20 @@
                                                 <amx:outputText value="#{bindings.credit.inputValue}" id="ot9"/>
                                             </amx:cellFormat>
                                         </amx:rowLayout>
+                                        </amx:tableLayout>
+                                        </amx:listItem>
+                                        
+               <amx:listItem id="lip6a" shortDesc="btn" showLinkIcon="false"
+                                              styleClass="hr-listItem-noselect">
+                                    <amx:tableLayout width="100%" id="ptl6a" shortDesc="btn">
+
+                                        <amx:rowLayout id="prl62a">
+                                            <amx:cellFormat width="100%" height="28px" id="pcf63a">
+                                        
+                                        <amx:commandButton id="commandButton2" text="Store visit" action="replenishment" iconPosition="trailing"
+                               styleClass="adfmf-commandButton-large"/>
+</amx:cellFormat>
+</amx:rowLayout>
                                     </amx:tableLayout>
                                 </amx:listItem>
                             </amx:listView>

@@ -259,16 +259,29 @@ public class ServicesWrapper
             for (int index=0;index<listSize;index++) 
             {
                 SoapGenericType item = (SoapGenericType)soapResultStoreList.getAttribute(index); 
-                String storeID = (String)item.getAttribute(0);
+//                String storeID = (String)item.getAttribute(0);
+//                int id = Integer.parseInt(storeID);
+//                String storeName = (String)item.getAttribute(1);
+//                String storePhone = (String)item.getAttribute(2);
+//                String storeAddress = (String)item.getAttribute(3);
+//                String storeCity = (String)item.getAttribute(4);
+//                //String storeCountry = (String)item.getAttribute(5);
+//                String storeZipCode = (String)item.getAttribute(6);
+//                String storeCredit = (String)item.getAttribute(7);
+//                
+   
+                   String storeID = (String)item.getAttribute(5);
                 int id = Integer.parseInt(storeID);
-                String storeName = (String)item.getAttribute(1);
-                String storePhone = (String)item.getAttribute(2);
-                String storeAddress = (String)item.getAttribute(3);
-                String storeCity = (String)item.getAttribute(4);
-                //String storeCountry = (String)item.getAttribute(5);
-                String storeZipCode = (String)item.getAttribute(6);
-                String storeCredit = (String)item.getAttribute(7);
-                
+                String storeName = (String)item.getAttribute(6);
+                String storePhone = (String)item.getAttribute(7);
+                String storeAddress = (String)item.getAttribute(0);
+                String storeCity = (String)item.getAttribute(1);
+                String storeCountry = (String)item.getAttribute(8);
+                String storeZipCode = (String)item.getAttribute(9);
+                String storeCredit = (String)item.getAttribute(4);
+ 
+   
+   
                 Store store = StoreLocator.s_getStoreByID(id);
                 if (store==null)
                 {
@@ -325,7 +338,7 @@ public class ServicesWrapper
      
 //                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
 //                                             AdfmfJavaUtilities.getFeatureName(),
-//                                             "adf.mf.api.amx.addMessage",
+//                                                        "navigator.notification.alert",
 //                                             new Object[] {AdfException.ERROR,
 //                                             errorMessage,
 //                                             null,
@@ -338,10 +351,11 @@ public class ServicesWrapper
                 String title = "Logon Failed";
                 String errorMessage = "Please enter a valid username and password";
                 
-                AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
-                         "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
+//                AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
+//                         "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
                 
-                return "fail";
+            throw new AdfException(errorMessage,AdfException.ERROR);
+
             }
             
         }catch(Exception e) {

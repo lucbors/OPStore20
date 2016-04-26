@@ -71,19 +71,16 @@ public class ApproveOrder {
         {
             String title = "Payment Details Validation";
                     
-            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
-                                     AdfmfJavaUtilities.getFeatureName(),
-                                     "adf.mf.api.amx.addMessage",
-                                     new Object[] {AdfException.ERROR,
-                                     validationErrorMessage,
-                                     null,
-                                     null });
+//            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
+//                                     AdfmfJavaUtilities.getFeatureName(),
+//           "navigator.notification.alert",
+//                                     new Object[] {AdfException.ERROR,
+//                                     validationErrorMessage,
+//                                     null,
+//                                     null });
             
-    
-    //        AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
-    //              "navigator.notification.alert", new Object[] {validationErrorMessage,null,title, "Ok"});
-
-            return null;
+            throw new AdfException(validationErrorMessage,AdfException.ERROR);
+            
         }
         
         
@@ -105,19 +102,18 @@ public class ApproveOrder {
             String title = "Order Confirmatoin Failed";
             String errorMessage = srvwrp.getSubmitOrderErrorMessage();
             
- 
-            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
-                                     AdfmfJavaUtilities.getFeatureName(),
-                                     "adf.mf.api.amx.addMessage",
-                                     new Object[] {AdfException.ERROR,
-                                     errorMessage,
-                                     null,
-                                     null });
+// 
+//            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
+//                                     AdfmfJavaUtilities.getFeatureName(),
+//            "navigator.notification.alert",
+//                                     new Object[] {AdfException.ERROR,
+//                                     errorMessage,
+//                                     null,
+//                                     null });
 
- //           AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon", 
- //                    "navigator.notification.alert", new Object[] {errorMessage,null,title, "Ok"});
+            throw new AdfException(validationErrorMessage,AdfException.ERROR);
+
         }
-        return null;
     }
 
     public void setOrderDate(Date orderDate) {
@@ -217,15 +213,8 @@ public class ApproveOrder {
     public void doClear(ActionEvent actionEvent) {
      
         
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
-             AdfmfJavaUtilities.getFeatureId(),
-             "clearSignature",
-             new Object[] {
-               null,
-               null,
-               null
-             });
-    }
+// obsolete
+}
 
     public void sendEmail(){
         String content = "";
@@ -250,8 +239,13 @@ public class ApproveOrder {
         String title = "Sending Receipt Process";
         if (value.equalsIgnoreCase("email")) {
             //send receipt to email.
+            if(1==0){
             sendEmail();
             message = "An email has been sent";
+            }
+            else{
+                message = "Unfortunately iOS 9 has an issue with sending emails"; 
+            }
         }
         else if (value.equalsIgnoreCase("print")) {
             //send receipt to printer.
@@ -261,7 +255,8 @@ public class ApproveOrder {
             //send receipt to sms.
             message = "Feature is available with premium license only. Please contact your sale representative";
         }
-        addJavaScriptMessage(AdfException.INFO, message); 
+        //addJavaScriptMessage(AdfException.INFO, message); 
+        throw new AdfException(message,AdfException.INFO);
        
  //       AdfmfContainerUtilities.invokeContainerJavaScriptFunction("Logon",
  //       "function(){navigator.notification.alert(message,  function(){}, 'Information', 'OK');}", new Object[] { });

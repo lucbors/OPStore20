@@ -10,43 +10,50 @@
             <amx:outputText value="Order Confirmation" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" text="Back" action="__back"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Search Store" action="search_store"
-                               styleClass="adfmf-commandButton-small"/>
         </amx:facet>
                 <amx:panelStretchLayout id="psl1">
             <amx:facet name="top">
-                  <amx:image id="i1" source="\images\thanks.png" inlineStyle="width:100%; height:20%;"/>
-  
+                  <amx:image id="i1" source="\images\thanks.png" inlineStyle="width:100%;"/>
+            
             </amx:facet>
             <amx:facet name="center">
 
         
-        <!--amx:outputText value="#{bindings.getSubmitOrderErrorMessage.result}" id="ot2"/-->
         <amx:outputText value="#{pageFlowScope.orderErrorMessage}" id="ot2"/>
-        <amx:panelGroupLayout id="pgl1" layout="vertical" inlineStyle="background-color:White; width:auto;"
-                              halign="center">
-            <!--amx:inputText label="Order Number:" id="it1"
-                     inlineStyle="width:50%; font-weight:bold; font-size:150%; color:Black; padding:3%; background-color:White; font-style:normal; text-align:center; vertical-align:middle; margin:50px; border-color:Gray; border-style:ridge;"
-                     inputType="number" readOnly="true" value="#{bindings.getSubmitOrderConfirmationNumber.result}"/-->
-            <amx:inputText label="Order Number:" id="it1"
-                           inlineStyle="width:50%; font-weight:bold; font-size:150%; color:Black; padding:3%; background-color:White; font-style:normal; text-align:center; vertical-align:middle; margin:50px; border-color:Gray; border-style:ridge;"
+    
+      <amx:tableLayout id="tl1" layout="weighted" halign="center" width="100%" styleClass="login-desc-container" inlineStyle="background:transparent">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat id="cf1" height="100" valign="middle" halign="center">
+                            <amx:panelFormLayout id="pfl1" fieldHalign="start" labelPosition="end">
+                               <amx:inputText label="Your Order Number is:" id="it1"
+                           inlineStyle="width:50%; font-weight:bold; font-size:150%; color:Black; padding:3%; background-color:White; font-style:normal; text-align:center; vertical-align:middle;  border-style:none; "
                            inputType="number" readOnly="true" value="#{pageFlowScope.orderConfirmationNumber}"/>
-            <amx:selectOneButton id="sob1" styleClass="adfmf-commandButton-small"
-                                 inlineStyle="background-color:White; border-style:ridge; outline-color:White; color:Aqua; font-weight:bolder; text-align:center; vertical-align:middle; border-color:Gray; padding:3%; width:95%;"
-                                 layout="horizontal" label="Receipt"
+                            </amx:panelFormLayout>
+                        </amx:cellFormat>
+         <amx:cellFormat id="cf2" height="100" valign="middle" halign="start">
+                                               
+                                       <amx:commandButton id="cb2" text="Back to Store" action="search_store"
+                               styleClass="adfmf-commandButton-large"/>
+
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+         
+
+                        </amx:tableLayout>
+ <amx:selectOneButton id="sob1" styleClass="adfmf-commandButton-large"
+                                 inlineStyle="background-color:White; border-style:none; outline-color:White; color:Aqua; font-weight:bolder; text-align:center; vertical-align:middle;  padding:3%; width:95%;"
+                                 layout="horizontal" label="Send Receipt:"
                                  valueChangeListener="#{pageFlowScope.ApproveOrder.ReciptTypePressed}">
                 <amx:selectItem id="si1" label="Email" value="email"/>
                 <amx:selectItem label="Print" id="si2" value="print"/>
                 <amx:selectItem label="SMS" id="si3" value="sms"/>
             </amx:selectOneButton>
-            <amx:spacer id="s1" height="20"/>
-            <!--
-                        inlineStyle="background-color:Silver; border-color:Silver; border-style:ridge; list-style-type:circle;"/>
-                        -->
-        </amx:panelGroupLayout>
+    
+    
+           
+          
 
 </amx:facet>
 
@@ -57,7 +64,7 @@
     <amx:cellFormat halign="center" id="cf2a" height="100%" valign="bottom">
                             <amx:spacer id="s1x" width="30"/>
 </amx:cellFormat>
-                        <amx:cellFormat halign="center" id="cf2" height="100%" valign="bottom" inlineStyle="background-color:White;">
+                        <amx:cellFormat halign="center" id="cf29" height="100%" valign="bottom" inlineStyle="background-color:White;">
                             <amx:spacer id="s1b" width="10"/>
                             <amx:image id="im1" source="/images/footer-oracle-logo.png" inlineStyle="width:30%;"/>
                             <amx:spacer id="s1bb" width="10"/>

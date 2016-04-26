@@ -19,7 +19,6 @@
             <amx:panelStretchLayout id="psl1">
             <amx:facet name="top">
 
-    <amx:panelGroupLayout id="pgl1" layout="wrap">
           <amx:tableLayout id="tl1" cellSpacing="0" cellPadding="0" width="100%"
                            inlineStyle="padding:4px 0px 0px;">
             <amx:rowLayout id="rl2">
@@ -45,12 +44,8 @@
               </amx:cellFormat>
             </amx:rowLayout>
           </amx:tableLayout>
-    </amx:panelGroupLayout>
     </amx:facet>
     <amx:facet name="center">
-    <amx:panelGroupLayout id="pgl5" layout="vertical"
-                          inlineStyle='position:absolute;top:70px;bottom:0;left:0;right:0'>
-      
         <amx:listView styleClass="adfmf-listView-insetList" value="#{bindings.OrderItem.collectionModel}" var="row" id="lv1">
           <amx:listItem showLinkIcon="false" id="li1">
             <amx:tableLayout id="t92"  width="100%">
@@ -95,7 +90,6 @@
             <amx:setPropertyListener id="spl5" from="#{row.quantity}" to="#{pageFlowScope.productToOrder}"/>
           </amx:listItem>
         </amx:listView>
-    </amx:panelGroupLayout>
     </amx:facet>
 </amx:panelStretchLayout>
   </amx:panelPage>

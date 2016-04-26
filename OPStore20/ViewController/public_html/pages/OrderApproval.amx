@@ -13,8 +13,8 @@
                 <amx:cellFormat id="cf2" columnSpan="1" halign="center"
                                 inlineStyle="vertical-align:top; padding:10px 0px 0px 0px;" rowSpan="1" valign="top"
                                 height="300" width="700">
-                    <amx:outputText value="Order Details" id="ot3" inlineStyle="font-size:large; color:Navy;"/>
-                    <amx:panelFormLayout id="pfl2" inlineStyle="background-color:#f6f6f7;">
+                    <amx:outputText value="Order Details" id="ot3" inlineStyle="font-size:large;"/>
+                    <amx:panelFormLayout id="pfl2">
                         <amx:inputText label="Order Total" id="it1"
                                        value="#{bindings.getConfirmedOrdersTotalAmountAsString.result}"
                                        readOnly="true"/>
@@ -28,8 +28,8 @@
                 <amx:cellFormat id="cf1" inlineStyle="vertical-align:top; padding:10px 0px 0px 0px;" halign="center"
                                 valign="top" height="300" width="700">
                     <amx:outputText value="Billing Details" id="ot4"
-                                    inlineStyle="vertical-align:middle; font-size:large; color:Navy;"/>
-                    <amx:panelFormLayout id="pfl3" fieldHalign="center" inlineStyle="background-color:#f6f6f7;">
+                                    inlineStyle="vertical-align:middle; font-size:large;"/>
+                    <amx:panelFormLayout id="pfl3" fieldHalign="center" >
                         <amx:inputText label="Address" id="it5" value="#{bindings.address.inputValue}"/>
                         <amx:inputText label="City" id="it6" value="#{bindings.city.inputValue}"/>
                         <amx:inputText label="State" id="it7" value="#{bindings.state.inputValue}"/>
@@ -39,8 +39,8 @@
                 <amx:cellFormat id="cf3" width="700" halign="center" valign="top"
                                 inlineStyle="vertical-align:top; padding:10px 0px 0px 0px;" height="300">
                     <amx:outputText value="Payment Details" id="ot5"
-                                    inlineStyle="font-size:large; padding:20px; color:Navy;"/>
-                    <amx:panelFormLayout id="pfl1" inlineStyle="background-color:#f6f6f7;">
+                                    inlineStyle="font-size:large; padding:20px;"/>
+                    <amx:panelFormLayout id="pfl1" >
                         <amx:selectOneChoice label="Payment Type" id="soc1"
                                              value="#{pageFlowScope.ApproveOrder.paymentTypeEnum}">
                             <amx:selectItem id="si1" label="Credit" value="0"/>
