@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.login-page .amx-panelPage-header {
+    background-color:transparent;
+    border-bottom:0;
+}
+
+
+.login-page .amx-panelPage-header .amx-outputText{
+    color:white;
+    font-weight:300;
+    font-size:24px;
+}
+
+
+.login-page-tall {
+    background-image: url("../../images/background_768_blur.png"); 
+}
+
+.login-page-wide {
+    background-image: url("../../images/background_1024_blur.png"); 
+}
+
+.login-desc-container {
+    margin-left:30%;
+    margin-right:30%;
+    margin-top:50px;
+}
+
+.amx-image.tabletListImage {
+    border: 2px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+}
+
+
+.amx-outputText.numMetricText {
+    font-size: 40px;
+    font-weight: lighter;
+}

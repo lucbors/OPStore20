@@ -1,0 +1,58 @@
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="getCustomersByState"
+              className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-184-197-195.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/y_SearchCustomerState?wsdl"
+                             service="{http://services.auraplayer.com}y_SearchCustomerStateService">
+                  <model name="{http://services.auraplayer.com}y_SearchCustomerStateService"
+                         xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.auraplayer.com}y_SearchCustomerStateService">
+                        <port name="y_SearchCustomerStateServicePort"
+                              binding="{http://services.auraplayer.com}y_SearchCustomerStateServiceSoapBinding">
+                           <soap addressUrl="http://ec2-54-184-197-195.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/y_SearchCustomerState"
+                                 xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="y_SearchCustomerState">
+                              <soap soapAction="y_SearchCustomerState" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="y_SearchCustomerStateRequest"/>
+                              <output name="y_SearchCustomerStateResponse"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="CreateNewOrder" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
+              xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://ec2-54-184-197-195.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/s_createNewOrder2?wsdl"
+                             service="{http://services.auraplayer.com}s_createNewOrder2Service">
+                  <model name="{http://services.auraplayer.com}s_createNewOrder2Service"
+                         xmlns="http://oracle.com/ws/model">
+                     <service name="{http://services.auraplayer.com}s_createNewOrder2Service">
+                        <port name="s_createNewOrder2ServicePort"
+                              binding="{http://services.auraplayer.com}s_createNewOrder2ServiceSoapBinding">
+                           <soap addressUrl="http://ec2-54-184-197-195.us-west-2.compute.amazonaws.com:7001/ServiceManager/Macro/ExecMacro/s_createNewOrder2"
+                                 xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="s_createNewOrder2">
+                              <soap soapAction="s_createNewOrder2" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="s_createNewOrder2Request"/>
+                              <output name="s_createNewOrder2Response"/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>  
+</References>

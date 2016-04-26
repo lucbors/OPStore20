@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.1.21" id="StoreSearchPageDef"
+                Package="com.eproseed.opstore.mobile.pagedefs">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables">
+
+            <variable Type="java.lang.String" Name="y_SearchCustomerState_MAIN_USERNAME_0" IsQueriable="false"/>
+            <variable Type="java.lang.String" Name="y_SearchCustomerState_MAIN_PASSWORD_0" IsQueriable="false"/>
+            <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_ID_0" IsQueriable="false"/>
+            <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_NAME_0" IsQueriable="false"/>
+            <variable Type="java.lang.String" Name="y_SearchCustomerState_S_CUSTOMER_STATE_0" IsQueriable="false"/>
+        </variableIterator>
+        <iterator Binds="root" RangeSize="25" DataControl="ServicesWrapper" id="ServicesWrapperIterator"/>
+       
+        <accessorIterator MasterBinding="ServicesWrapperIterator" Binds="storesList" RangeSize="-1"
+                          DataControl="ServicesWrapper" BeanClass="com.eproseed.opstore.mobile.model.pojos.Store"
+                          id="storesListIterator"/>
+
+        <methodIterator Binds="getOrderHistoryOfStoreByIndex.result" DataControl="ServicesWrapper" RangeSize="-1"
+                        BeanClass="com.eproseed.opstore.mobile.model.pojos.OrderHistoryItem" id="getOrderHistoryOfStoreByIndexIterator"/>
+
+        <methodIterator Binds="y_SearchCustomerState.result" DataControl="getCustomersByState" RangeSize="25"
+                        BeanClass="com.eproseed.opstore.mobile.getCustomersByState.y_SearchCustomerState"
+                        id="y_SearchCustomerStateIterator"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="storesListIterator" id="storesList">
+            <nodeDefinition DefName="com.eproseed.opstore.mobile.model.pojos.Store" Name="storesList0">
+                <AttrNames>
+                    <Item Value="name"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+
+
+        <attributeValues IterBinding="storesListIterator" id="state">
+            <AttrNames>
+                <Item Value="state"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="city">
+            <AttrNames>
+                <Item Value="city"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="name">
+            <AttrNames>
+                <Item Value="name"/>
+            </AttrNames>
+        </attributeValues>
+
+        <attributeValues IterBinding="storesListIterator" id="contactName">
+            <AttrNames>
+                <Item Value="contactName"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="phoneNumber">
+            <AttrNames>
+                <Item Value="phoneNumber"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="email">
+            <AttrNames>
+                <Item Value="email"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="address">
+            <AttrNames>
+                <Item Value="address"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="lastOrderDate">
+            <AttrNames>
+                <Item Value="lastOrderDate"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="monthlyAverage">
+            <AttrNames>
+                <Item Value="monthlyAverage"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="storesListIterator" id="imagePath">
+            <AttrNames>
+                <Item Value="imagePath"/>
+            </AttrNames>
+        </attributeValues>
+        
+        
+                <attributeValues id="credit" IterBinding="storesListIterator">
+            <AttrNames>
+                <Item Value="credit"/>
+            </AttrNames>
+        </attributeValues>
+
+        
+        <tree IterBinding="getOrderHistoryOfStoreByIndexIterator" id="OrderHistoryItem">
+            <nodeDefinition DefName="com.eproseed.opstore.mobile.model.pojos.OrderHistoryItem" Name="OrderHistoryItem0">
+                <AttrNames>
+                    <Item Value="orderAmount"/>
+                    <Item Value="quarter"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <methodAction id="getOrderHistoryOfStoreByIndex" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="getOrderHistoryOfStoreByIndex" IsViewObjectMethod="false"
+                      DataControl="ServicesWrapper" InstanceName="data.ServicesWrapper.dataProvider"
+                      ReturnName="data.ServicesWrapper.methodResults.getOrderHistoryOfStoreByIndex_ServicesWrapper_dataProvider_getOrderHistoryOfStoreByIndex_result">
+            <NamedData NDName="index" NDValue="#{pageFlowScope.storeLocator.selectedStoreIndex}" NDType="int"/>
+        </methodAction>
+ 
+        <tree IterBinding="storesListIterator" id="storesList1">
+            <nodeDefinition DefName="com.eproseed.opstore.mobile.model.pojos.Store" Name="storesList10">
+                <AttrNames>
+                    <Item Value="name"/>
+                    <Item Value="id"/>
+                    <Item Value="fullAddress"/>
+                    <Item Value="id"/>
+                    <Item Value="imagePath"/>
+                    <Item Value="address"/>
+                    <Item Value="state"/>
+                    <Item Value="zipCode"/>
+                    <Item Value="contactName"/>
+                    <Item Value="phoneNumber"/>
+                    <Item Value="email"/>
+                    <Item Value="yearOfOrigin"/>
+                    <Item Value="incomeLevel"/>
+                    <Item Value="creditLimit"/>
+                    <Item Value="lastYearTotal"/>
+                    <Item Value="monthlyAverage"/>
+                    <Item Value="lastOrderDate"/>
+                    <Item Value="city"/>
+                    <Item Value="lastOrderTotal"/>
+                    <Item Value="filter"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+
+                
+        
+        
+        <methodAction id="sendEmail" InstanceName="data.DeviceFeatures.dataProvider" DataControl="DeviceFeatures"
+                      RequiresUpdateModel="true" Action="invokeMethod" MethodName="sendEmail"
+                      IsViewObjectMethod="false">
+            <NamedData NDName="to" NDValue="#{bindings.email.inputValue}" NDType="java.lang.String"/>
+            <NamedData NDName="cc" NDValue="" NDType="java.lang.String"/>
+            <NamedData NDName="subject" NDValue="" NDType="java.lang.String"/>
+            <NamedData NDName="body" NDType="java.lang.String"/>
+            <NamedData NDName="bcc" NDType="java.lang.String"/>
+            <NamedData NDName="attachments" NDType="java.lang.String"/>
+            <NamedData NDName="mimeTypes" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="sendSMS" InstanceName="data.DeviceFeatures.dataProvider" DataControl="DeviceFeatures"
+                      RequiresUpdateModel="true" Action="invokeMethod" MethodName="sendSMS" IsViewObjectMethod="false">
+            <NamedData NDName="to" NDValue="#{bindings.phoneNumber.inputValue}" NDType="java.lang.String"/>
+            <NamedData NDName="body" NDValue="Hi" NDType="java.lang.String"/>
+        </methodAction>
+      
+    </bindings>
+</pageDefinition>

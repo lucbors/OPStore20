@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+        <!--
+                Copyright © AuraPlayer 2013 All Rights Reserved. 
+                No part of this source code may be reproduced without AuraPlayer's express consent.
+          -->
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Order Summary" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+       <amx:commandButton id="cb1" text="Back" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <!--amx:commandButton id="cb1" text="Edit" action="edit" styleClass="adfmf-commandButton-small"/-->
+      <amx:commandButton id="cb2" text="Checkout" action="approve" styleClass="adfmf-commandButton-small"/>
+    </amx:facet>
+            <amx:panelStretchLayout id="psl1">
+            <amx:facet name="top">
+
+    <amx:panelGroupLayout id="pgl1" layout="wrap">
+          <amx:tableLayout id="tl1" cellSpacing="0" cellPadding="0" width="100%"
+                           inlineStyle="padding:4px 0px 0px;">
+            <amx:rowLayout id="rl2">
+              <amx:cellFormat id="cf6" columnSpan="2" rowSpan="1" width="43%" valign="middle"
+                              inlineStyle="padding:7px; font-size:120%;">
+                <amx:outputText value="Product" id="ot5" inlineStyle=" font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf8" halign="center" inlineStyle="font-size:120%;">
+                <amx:outputText value="Unit Price" id="ot7" inlineStyle="font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf9" inlineStyle="font-size:120%;">
+                <amx:outputText value="Quantity" id="ot8" inlineStyle=" font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf3" halign="end" width="7%" inlineStyle="font-size:120%;">
+                <amx:outputText value="Total: " id="ot9" inlineStyle="color:Maroon; text-align:left; font-size:100%;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf4" width="100px" inlineStyle="font-size:120%;">
+                <amx:outputText value="#{bindings.Return.inputValue}" id="ot11"
+                                inlineStyle="color:Maroon; text-align:left; font-size:100%;">
+                  <amx:convertNumber id="cn3" maxFractionDigits="2" minFractionDigits="2" currencyCode="$"
+                                     currencySymbol="$" type="currency"/>
+                </amx:outputText>
+              </amx:cellFormat>
+            </amx:rowLayout>
+          </amx:tableLayout>
+    </amx:panelGroupLayout>
+    </amx:facet>
+    <amx:facet name="center">
+    <amx:panelGroupLayout id="pgl5" layout="vertical"
+                          inlineStyle='position:absolute;top:70px;bottom:0;left:0;right:0'>
+      
+        <amx:listView styleClass="adfmf-listView-insetList" value="#{bindings.OrderItem.collectionModel}" var="row" id="lv1">
+          <amx:listItem showLinkIcon="false" id="li1">
+            <amx:tableLayout id="t92"  width="100%">
+              <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf95" height="100px">
+                 
+                  <amx:image id="i4" source="/images/#{row.product.bindings.imagePath.inputValue}.jpg"
+                             styleClass="tabletListImage"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf1" width="30%">
+                  <amx:outputText value="#{row.product.bindings.name.inputValue}" id="ot33"
+                                  inlineStyle="font-weight:bold;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf2" halign="start" valign="middle">
+                  <amx:outputText value="#{row.paidPrice}" id="ot2"
+                                  inlineStyle="font-weight:bold; text-align:right; ">
+                    <amx:convertNumber id="cn1" maxFractionDigits="2" minFractionDigits="2" currencySymbol="$"
+                                       currencyCode="$" type="currency"/>
+                  </amx:outputText>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf5" halign="end">
+                  <amx:outputText value="#{row.quantity}" id="ot3" inlineStyle="font-weight:bold;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf7"/>
+                <amx:cellFormat id="cf14" halign="end">
+                  <amx:outputText value="#{row.quantity*row.paidPrice}" id="ot6"
+                                  inlineStyle="color:Maroon; font-weight:bold; text-align:right;">
+                    <amx:convertNumber id="cn2" maxFractionDigits="2" minFractionDigits="2" currencySymbol="$"
+                                       currencyCode="$" type="currency"/>
+                  </amx:outputText>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf16" width="10"/>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:setPropertyListener id="spl1" to="#{pageFlowScope.productSalePrice}"
+                                     from="#{row.product.bindings.salePrice.inputValue}" type="action"/>
+            <amx:setPropertyListener id="spl4" from="#{row.product.bindings.salePrice.inputValue}"
+                                     to="#{pageFlowScope.productListPrice}"/>
+            <amx:setPropertyListener id="spl2" from="#{row.product.bindings.name.inputValue}" to="#{pageFlowScope.productName}"/>
+            <amx:setPropertyListener id="spl3" from="#{row.product.bindings.inventoryQuantity.inputValue}"
+                                     to="#{pageFlowScope.productInventoryQuantity}"/>
+            <amx:setPropertyListener id="spl5" from="#{row.quantity}" to="#{pageFlowScope.productToOrder}"/>
+          </amx:listItem>
+        </amx:listView>
+    </amx:panelGroupLayout>
+    </amx:facet>
+</amx:panelStretchLayout>
+  </amx:panelPage>
+</amx:view>

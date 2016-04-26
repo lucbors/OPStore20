@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.1.21" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.eproseed.opstore.mobile" ClientType="Generic">
+    <definitionFactories>
+        <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+                 className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+    </definitionFactories>
+    <pageMap>
+        <page path="/Logon/Logon.amx" usageId="com_eproseed_opstore_mobile_LogonPageDef"/>
+        <page path="/pages/StoreSearch.amx" usageId="com_eproseed_opstore_mobile_StoreSearchPageDef"/>
+        <page path="/pages/Replenishment.amx" usageId="com_eproseed_opstore_mobile_ReplenishmentPageDef"/>
+        <page path="/pages/LastMinuteAdditions.amx" usageId="com_eproseed_opstore_mobile_LastMinuteAdditionsPageDef"/>
+        <page path="/pages/OrderSummery.amx" usageId="com_eproseed_opstore_mobile_OrderSummeryPageDef"/>
+        <page path="/pages/OrderConfirmation.amx" usageId="com_eproseed_opstore_mobile_OrderConfirmationPageDef"/>
+        <page path="/pages/OrderApproval.amx" usageId="com_eproseed_opstore_mobile_OrderApprovalPageDef"/>
+    </pageMap>
+    <pageDefinitionUsages>
+        <page id="com_eproseed_opstore_mobile_LogonPageDef"
+              path="com.eproseed.opstore.mobile.pagedefs.Logon.LogonPageDef"/>
+        <page id="com_eproseed_opstore_mobile_StoreSearchPageDef"
+              path="com.eproseed.opstore.mobile.pagedefs.StoreSearchPageDef"/>
+        <page id="com_eproseed_opstore_mobile_ReplenishmentPageDef"
+              path="com.eproseed.opstore.mobile.pagedefs.ReplenishmentPageDef"/>
+        <page id="com_eproseed_opstore_mobile_LastMinuteAdditionsPageDef"
+              path="com.eproseed.opstore.mobile.pagedefs.LastMinuteAdditionsPageDef"/>
+        <page id="com_eproseed_opstore_mobile_OrderSummeryPageDef"
+              path="com.eproseed.opstore.mobile.pagedefs.OrderSummeryPageDef"/>
+        <page id="com_eproseed_opstore_mobile_OrderConfirmationPageDef"
+              path="com.eproseed.opstore.mobile.pagedefs.OrderConfirmationPageDef"/>
+        <page id="com_eproseed_opstore_mobile_OrderApprovalPageDef"
+              path="com.eproseed.opstore.mobile.pagedefs.OrderApprovalPageDef"/>
+    </pageDefinitionUsages>
+    <dataControlUsages>
+        <dc id="DeviceFeatures1" path="com.eproseed.opstore.application.DeviceFeatures"/>
+        <dc id="DeviceFeatures" path="application.DeviceFeatures"/>
+        <dc id="ServicesWrapper" path="com.eproseed.opstore.mobile.ServicesWrapper"/>
+        <dc id="CreateNewOrder" path="com.eproseed.opstore.mobile.CreateNewOrder"/>
+        <dc id="getCustomersByState" path="com.eproseed.opstore.mobile.getCustomersByState"/>
+
+    </dataControlUsages>
+</Application>

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <!--
+                Copyright © AuraPlayer 2013 All Rights Reserved. 
+                No part of this source code may be reproduced without AuraPlayer's express consent.
+          -->
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Promotions" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" text="Back" action="back" styleClass="adfmf-commandButton-small"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" text="Cart" action="order_summery" icon="/images/cart-512.png"
+                               styleClass="adfmf-commandButton-small"/>
+        </amx:facet>
+        <amx:spacer id="s3" height="5"/>
+        <amx:tableLayout id="tl2" inlineStyle="background-color:White; padding:10px;" width="100%">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1">
+                    <amx:spacer id="s1" width="20"/>
+                    <amx:outputText value="Recommended Products" id="ot2" inlineStyle="font-size:large;"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl9">
+                <amx:cellFormat id="cf10" width="100%">
+                    <amx:panelGroupLayout id="pgl5" layout="horizontal" inlineStyle="width:100%" scrollPolicy="scroll">
+                        <amx:iterator var="row" value="#{bindings.OrderItem.collectionModel}" id="i5">
+                            <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv1">
+                                <amx:listItem showLinkIcon="false" id="li1" styleClass="opstore-listItem-noselect"
+                                              inlineStyle="background-color:inherit;">
+                                    <amx:setPropertyListener id="spl1" from="#{row.product.bindings.prodID.inputValue}"
+                                                             type="action" to="#{pageFlowScope.selectedProductID}"/>
+                                    <amx:tableLayout id="tl5" width="400px">
+                                        <amx:rowLayout id="rl4">
+                                            <amx:cellFormat id="cf14" halign="end" valign="middle" columnSpan="2">
+                                                <amx:commandLink id="cl3"
+                                                                 action="#{pageFlowScope.Replenishment.RemoveProductFromRecommendedListByProductID}">
+                                                    <amx:image id="i7" source="/images/Garbage-Closed-blue-32-3.png"/>
+                                                    <amx:setPropertyListener id="spl2"
+                                                                             from="#{row.product.bindings.prodID.inputValue}"
+                                                                             to="#{pageFlowScope.selectedProductID}"/>
+                                                </amx:commandLink>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="rl3">
+                                            <amx:cellFormat id="cf2" width="60%">
+                                                <amx:tableLayout id="t92" styleClass="cust-Ord" width="250px">
+                                                    <amx:rowLayout id="rl13">
+                                                        <amx:cellFormat id="cf16">
+                                                            <amx:spacer id="s7" height="10"/>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                    <amx:rowLayout id="r94">
+                                                        <amx:cellFormat id="cf94" columnSpan="2" height="40px">
+                                                            <amx:tableLayout id="tl6">
+                                                                <amx:rowLayout id="rl15">
+                                                                    <amx:cellFormat id="cf18">
+                                                                        <amx:spacer id="s10" width="10"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf19">
+                                                                        <amx:outputText value="#{row.product.bindings.name.inputValue}"
+                                                                                        id="ot33"
+                                                                                        inlineStyle="font-weight:bold;"/>
+                                                                        <amx:outputText value="ID: #{row.product.bindings.prodID.inputValue}"
+                                                                                        id="ot6"/>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                            </amx:tableLayout>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                    <amx:rowLayout id="r95">
+                                                        <amx:cellFormat id="cf95" width="30%" height="100px">
+                                                            <amx:spacer id="s9" width="10"/>
+                                                            <amx:image id="i4"
+                                                                       source="/images/#{row.product.bindings.imagePath.inputValue}.jpg"
+                                                                       styleClass="tabletListImage"/>
+                                                        </amx:cellFormat>
+                                                        <amx:cellFormat id="cf96" width="70%" height="100px">
+                                                            <amx:tableLayout id="t93" width="100%">
+                                                                <amx:rowLayout id="rl8">
+                                                                    <amx:cellFormat id="cf92" width="45">
+                                                                        <amx:outputText value="List:" id="ot95"
+                                                                                        inlineStyle="color:Black;"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf913" width="50%"
+                                                                                    halign="center">
+                                                                        <amx:outputText value="#{row.product.bindings.listPrice.inputValue}"
+                                                                                        id="ot41"
+                                                                                        inlineStyle="color:Black;">
+                                                                            <amx:convertNumber id="cn1"
+                                                                                               maxFractionDigits="2"
+                                                                                               minFractionDigits="2"
+                                                                                               type="currency"
+                                                                                               currencyCode="$"
+                                                                                               currencySymbol="$"/>
+                                                                        </amx:outputText>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                                <amx:rowLayout id="rl11">
+                                                                    <amx:cellFormat id="cf13">
+                                                                        <amx:spacer id="s4" height="30"/>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                                <amx:rowLayout id="rl10"
+                                                                               rendered="#{row.product.bindings.listPrice.inputValue!=row.product.bindings.salePrice.inputValue}">
+                                                                    <amx:cellFormat id="cf12" width="45">
+                                                                        <amx:outputText value="Sale:" id="ot7"
+                                                                                        inlineStyle="color:Red;"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf11" halign="center">
+                                                                        <amx:outputText value="#{row.product.bindings.salePrice.inputValue}"
+                                                                                        id="ot8"
+                                                                                        inlineStyle="color:Red;">
+                                                                            <amx:convertNumber id="cn2"
+                                                                                               maxFractionDigits="2"
+                                                                                               type="currency"
+                                                                                               minFractionDigits="2"
+                                                                                               currencyCode="$"
+                                                                                               currencySymbol="$"/>
+                                                                        </amx:outputText>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                            </amx:tableLayout>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                    <amx:rowLayout id="rl14">
+                                                        <amx:cellFormat id="cf17">
+                                                            <amx:spacer id="s8" height="10"/>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                </amx:tableLayout>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat id="cf3" width="40%" halign="end">
+                                                <amx:tableLayout id="tl1">
+                                                    <amx:rowLayout id="rl2">
+                                                        <amx:cellFormat id="cf25">
+                                                            <amx:tableLayout id="tl23">
+                                                                <amx:rowLayout id="rl25">
+                                                                    <amx:cellFormat id="cf143" halign="end">
+                                                                    <amx:spacer width="120" height="30"/>
+                                                                        <amx:commandLink id="cl2"
+                                                                                         action="#{pageFlowScope.Replenishment.DecrementQuantityByProductID}"
+                                                                                         inlineStyle="color:Black;">
+                                                                            <amx:setPropertyListener id="spl27"
+                                                                                                     from="#{row.product.bindings.prodID.inputValue}"
+                                                                                                     to="#{pageFlowScope.selectedProductID}"/>
+                                                                            <amx:image id="i21"
+                                                                                       source="/images/Minus-blue-32-6.png"/>
+                                                                        </amx:commandLink>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf123" halign="start">
+                                                                    <amx:spacer width="1" height="30"/>
+                                                                  
+                                                                        <amx:inputText id="it1"
+                                                                                       value="#{row.quantity}"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf14w" halign="start">
+                                                                      <amx:spacer width="1" height="30"/>
+                                                                  
+                                                                        <amx:commandLink id="cl1"
+                                                                                         action="#{pageFlowScope.Replenishment.IncrementQuantityByProductID}"
+                                                                                         inlineStyle="color:Black;">
+                                                                            <amx:setPropertyListener id="spl26"
+                                                                                                     from="#{row.product.bindings.prodID.inputValue}"
+                                                                                                     to="#{pageFlowScope.selectedProductID}"
+                                                                                                     type="action"/>
+                                                                            <amx:image id="i3"
+                                                                                       source="/images/Add-blue-32-6-inverse.png"/>
+                                                                        </amx:commandLink>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                            </amx:tableLayout>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                </amx:tableLayout>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                </amx:listItem>
+                            </amx:listView>
+                        </amx:iterator>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:spacer id="s2" height="40"/>
+        <amx:tableLayout id="tl3" inlineStyle="background-color:White; padding:10px;" width="100%">
+            <amx:rowLayout id="rl111">
+                <amx:cellFormat id="cf111">
+                    <amx:spacer id="s11" width="20"/>
+                    <amx:outputText value="Best Sellers" id="ot21" inlineStyle="font-size:large; "/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl111a">
+                <amx:cellFormat id="cf111a" width="100%">
+                    <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="width:100%" scrollPolicy="scroll">
+                        <amx:iterator var="row" value="#{bindings.OrderItem1.collectionModel}" id="i2">
+                            <amx:panelGroupLayout>
+                                <amx:listView styleClass="adfmf-listView-insetList" var="row" id="lv2">
+                                    <amx:listItem showLinkIcon="false" id="li2" styleClass="opstore-listItem-noselect"
+                                                  inlineStyle="background-color:inherit;">
+                                        <amx:setPropertyListener id="spl3"
+                                                                 from="#{row.product.bindings.prodID.inputValue}"
+                                                                 type="action" to="#{pageFlowScope.selectedProductID}"/>
+                                     
+                                                                         <amx:tableLayout id="tl5y" width="400px">
+                                        <amx:rowLayout id="rl4y">
+                                            <amx:cellFormat id="cf14y" halign="end" valign="middle" columnSpan="2">
+                                                <amx:commandLink id="cl3y"
+                                                                 action="#{pageFlowScope.Replenishment.RemoveProductFromBestSellerListByProductID}">
+                                                    <amx:image id="i7y" source="/images/Garbage-Closed-blue-32-3.png"/>
+                                                    <amx:setPropertyListener id="spl2y"
+                                                                             from="#{row.product.bindings.prodID.inputValue}"
+                                                                             to="#{pageFlowScope.selectedProductID}"/>
+                                                </amx:commandLink>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="rl3y">
+                                            <amx:cellFormat id="cf2y" width="60%">
+                                                <amx:tableLayout id="t92y" styleClass="cust-Ord" width="250px">
+                                                    <amx:rowLayout id="rl13y">
+                                                        <amx:cellFormat id="cf16y">
+                                                            <amx:spacer id="s7y" height="10"/>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                    <amx:rowLayout id="r94y">
+                                                        <amx:cellFormat id="cf94y" columnSpan="2" height="40px">
+                                                            <amx:tableLayout id="tl6y">
+                                                                <amx:rowLayout id="rl15y">
+                                                                    <amx:cellFormat id="cf18y">
+                                                                        <amx:spacer id="s10y" width="10"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf19y">
+                                                                        <amx:outputText value="#{row.product.bindings.name.inputValue}"
+                                                                                        id="ot33y"
+                                                                                        inlineStyle="font-weight:bold;"/>
+                                                                        <amx:outputText value="ID: #{row.product.bindings.prodID.inputValue}"
+                                                                                        id="ot6y"/>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                            </amx:tableLayout>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                    <amx:rowLayout id="r95y">
+                                                        <amx:cellFormat id="cf95y" width="30%" height="100px">
+                                                            <amx:spacer id="s9y" width="10"/>
+                                                            <amx:image id="i4y"
+                                                                       source="/images/#{row.product.bindings.imagePath.inputValue}.jpg"
+                                                                       styleClass="tabletListImage"/>
+                                                        </amx:cellFormat>
+                                                        <amx:cellFormat id="cf96y" width="70%" height="100px">
+                                                            <amx:tableLayout id="t93y" width="100%">
+                                                                <amx:rowLayout id="rl8y">
+                                                                    <amx:cellFormat id="cf92y" width="45">
+                                                                        <amx:outputText value="List:" id="ot95y"
+                                                                                        inlineStyle="color:Black;"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf913y" width="50%"
+                                                                                    halign="center">
+                                                                        <amx:outputText value="#{row.product.bindings.listPrice.inputValue}"
+                                                                                        id="ot41y"
+                                                                                        inlineStyle="color:Black;">
+                                                                            <amx:convertNumber id="cn1y"
+                                                                                               maxFractionDigits="2"
+                                                                                               minFractionDigits="2"
+                                                                                               type="currency"
+                                                                                               currencyCode="$"
+                                                                                               currencySymbol="$"/>
+                                                                        </amx:outputText>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                                <amx:rowLayout id="rl1y1">
+                                                                    <amx:cellFormat id="cf13y">
+                                                                        <amx:spacer id="s4y" height="30"/>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                                <amx:rowLayout id="rl10y"
+                                                                               rendered="#{row.product.bindings.listPrice.inputValue!=row.product.bindings.salePrice.inputValue}">
+                                                                    <amx:cellFormat id="cf12y" width="45">
+                                                                        <amx:outputText value="Sale:" id="oty7"
+                                                                                        inlineStyle="color:Red;"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf11y" halign="center">
+                                                                        <amx:outputText value="#{row.product.bindings.salePrice.inputValue}"
+                                                                                        id="ot8y"
+                                                                                        inlineStyle="color:Red;">
+                                                                            <amx:convertNumber id="cn2y"
+                                                                                               maxFractionDigits="2"
+                                                                                               type="currency"
+                                                                                               minFractionDigits="2"
+                                                                                               currencyCode="$"
+                                                                                               currencySymbol="$"/>
+                                                                        </amx:outputText>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                            </amx:tableLayout>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                    <amx:rowLayout id="rl14y">
+                                                        <amx:cellFormat id="cf17y">
+                                                            <amx:spacer id="s8y" height="10"/>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                </amx:tableLayout>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat id="cf3y" width="25%">
+                                                <amx:tableLayout id="tl1y">
+                                                    <amx:rowLayout id="rly2">
+                                                        <amx:cellFormat id="cf2y5">
+                                                            <amx:tableLayout id="tl23y">
+                                                                <amx:rowLayout id="rl25y">
+                                                                    <amx:cellFormat id="cf143y" halign="end">
+                                                                                                                                        <amx:spacer width="120" height="30"/>
+
+                                                                        <amx:commandLink id="cl2y"
+                                                                                         action="#{pageFlowScope.Replenishment.DecrementQuantityByProductID}"
+                                                                                         inlineStyle="color:Black;">
+                                                                            <amx:setPropertyListener id="spl2y7"
+                                                                                                     from="#{row.product.bindings.prodID.inputValue}"
+                                                                                                     to="#{pageFlowScope.selectedProductID}"/>
+                                                                            <amx:image id="i2y1"
+                                                                                       source="/images/Minus-blue-32-6.png"/>
+                                                                        </amx:commandLink>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf123y" halign="start">
+                                                                                                                                        <amx:spacer width="1" height="30"/>
+
+                                                                        <amx:inputText id="it1y"
+                                                                                       value="#{row.quantity}"/>
+                                                                    </amx:cellFormat>
+                                                                    <amx:cellFormat id="cf14wy" halign="start">
+                                                                                                                                        <amx:spacer width="1" height="30"/>
+
+                                                                        <amx:commandLink id="cl1y"
+                                                                                         action="#{pageFlowScope.Replenishment.IncrementQuantityByProductID}"
+                                                                                         inlineStyle="color:Black;">
+                                                                            <amx:setPropertyListener id="spl26y"
+                                                                                                     from="#{row.product.bindings.prodID.inputValue}"
+                                                                                                     to="#{pageFlowScope.selectedProductID}"
+                                                                                                     type="action"/>
+                                                                            <amx:image id="i3y"
+                                                                                       source="/images/Add-blue-32-6-inverse.png"/>
+                                                                        </amx:commandLink>
+                                                                    </amx:cellFormat>
+                                                                </amx:rowLayout>
+                                                            </amx:tableLayout>
+                                                        </amx:cellFormat>
+                                                    </amx:rowLayout>
+                                                </amx:tableLayout>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+
+                                     
+                                     
+                                     
+                                     
+                                      
+                                    </amx:listItem>
+                                </amx:listView>
+                            </amx:panelGroupLayout>
+                        </amx:iterator>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:panelPage>
+</amx:view>
